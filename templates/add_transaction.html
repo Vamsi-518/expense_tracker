@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-box">
+
+    <h1>Add Transaction</h1>
+
+    <form method="POST">
+
+        <label>Transaction Type</label>
+
+        <select name="type" required>
+
+            <option value="Expense">
+                Expense
+            </option>
+
+            <option value="Income">
+                Income
+            </option>
+
+        </select>
+
+
+        <label>Category</label>
+
+        <select name="category" required>
+
+            <option value="">
+                Select Category
+            </option>
+
+            <option value="Food">
+                Food
+            </option>
+
+            <option value="Travel">
+                Travel
+            </option>
+
+            <option value="Shopping">
+                Shopping
+            </option>
+
+            <option value="Bills">
+                Bills
+            </option>
+
+            <option value="Salary">
+                Salary
+            </option>
+
+            <option value="Other">
+                Other
+            </option>
+
+        </select>
+
+
+        <label>Amount</label>
+
+        <input
+            type="number"
+            name="amount"
+            step="0.01"
+            min="0"
+            placeholder="Enter amount"
+            required
+        >
+
+
+        <label>Description</label>
+
+        <textarea
+            name="description"
+            placeholder="Enter description"
+        ></textarea>
+
+
+        <label>Date</label>
+
+        <input
+            type="date"
+            name="transaction_date"
+            id="transaction_date"
+            required
+        >
+
+
+        <button type="submit">
+            Save Transaction
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
