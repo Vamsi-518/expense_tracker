@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -9,10 +10,11 @@ app.secret_key = "expense_tracker_secret_key"
 
 def get_db():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="123456",
-        database="expense_tracker"
+        host=os.environ.get("DB_HOST", "localhost"),
+        user=os.environ.get("DB_USER", "root"),
+        password=os.environ.get("DB_PASSWORD", "123456"),
+        database=os.environ.get("DB_NAME", "expense_tracker"),
+        port=int(os.environ.get("DB_PORT", 3306))
     )
 
 def login_required(route_function):
