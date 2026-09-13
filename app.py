@@ -10,7 +10,7 @@ app.secret_key = "expense_tracker_secret_key"
 
 def get_db():
     return mysql.connector.connect(
-        host=os.environ.get("DB_HOST", "localhost"),
+        host=os.environ.get("DB_HOST"),
         user=os.environ.get("DB_USER", "root"),
         password=os.environ.get("DB_PASSWORD", "123456"),
         database=os.environ.get("DB_NAME", "expense_tracker"),
@@ -106,6 +106,7 @@ def login():
 
         cursor.close()
         db.close()
+        
 
         if user and check_password_hash(user["password"], password):
 
